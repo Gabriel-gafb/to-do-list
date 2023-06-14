@@ -1,5 +1,5 @@
 :root{
-    --blue-dark: ##1E6F9F;
+    --blue-dark: #1E6F9F;
     --blue: #4EA8DE;
     --purple-dark: #5E60CE;
     --purple: #8284FA;
@@ -23,11 +23,12 @@
 
 body {
     background-color: var(--gray-650);
--webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
 }
 body, input, textarea, button{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     line-height: 1.4;
-    color: var(--gray-100)
+    color: var(--gray-100);
+    outline: none;
 }

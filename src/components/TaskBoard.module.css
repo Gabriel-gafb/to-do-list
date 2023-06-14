@@ -1,5 +1,20 @@
 .taskList{
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin-top: 3rem;
+    flex-direction: column;
+}
+
+.infos{
+    display:flex;
+    justify-content: space-between;
+    width: 736px;
+}
+
+.registeredTaskBoard{
+    margin-top: 1.5rem;
+    width: 736px;
+    border-top: 1px solid var(--gray-400);
+    display: flex;
+    justify-content: center;
 }
