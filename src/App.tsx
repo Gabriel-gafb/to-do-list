@@ -1,14 +1,14 @@
 import { Header } from './components/Header'
 import { InputBoard } from './components/InputBoard'
 import { TaskBoard } from './components/TaskBoard'
-// import { v4 as uuid } from 'uuid';
 import { useState } from 'react';
 
 import './global.css'
 
 export interface TaskInfo{
   id: string,
-  content: string
+  content: string,
+  isChecked: boolean
 }
 
 function App() {
@@ -26,11 +26,22 @@ function App() {
 
     setTasks([...tasks, taskData])
   }
+  function handleCheckChange(id: string){
+
+    const editedTasks = tasks.map(task => {
+            const editingTask = {...task}
+              if(task.id === id)
+              editingTask.isChecked = !task.isChecked;
+            
+            return editingTask;
+          })
+          setTasks(editedTasks)
+  }
   return (
     <div>
       <Header/>
       <InputBoard onInsert={handleInsert}/>
-      <TaskBoard tasks={tasks} onDelete={handleDeleteTask}/>
+      <TaskBoard tasks={tasks} onCheckChange={handleCheckChange} onDelete={handleDeleteTask}/>
     </div>
     )
 }

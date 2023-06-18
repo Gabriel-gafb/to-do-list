@@ -1,31 +1,33 @@
 import styles from "./TaskComponent.module.css";
 import { Trash } from "@phosphor-icons/react";
 import { useState } from "react";
+import { TaskInfo } from "../App";
 
-interface CheckboxProps{
-    id: string;
-    content: string;
+interface TaskProps{
+    task: TaskInfo;
+    onCheckedChange: (id: string) => void;
     onDelete: (id: string) => void;
 }
-const CheckboxComponent = ({id, content, onDelete}: CheckboxProps) => {
+const TaskComponent = ({task, onCheckedChange, onDelete}: TaskProps) => {
     
-    const [isChecked, setIsChecked] = useState(false);
-    const [styleTask, setStyleTask] = useState(styles.taskNotChecked);
+  const [styleTask, setStyleTask] = useState(styles.taskNotChecked);
 
-  function handleIsChecked() {
-    setIsChecked(!isChecked);
-    if (!isChecked) setStyleTask(styles.taskChecked);
-    else setStyleTask(styles.taskNotChecked);
+  function handleIsCheckedChange() {
+    onCheckedChange(task.id)
+    if (!task.isChecked) 
+      setStyleTask(styles.taskChecked);
+    else 
+      setStyleTask(styles.taskNotChecked);
   }
   return (
     <li className={styleTask} >
-      <input type="checkbox" onChange={handleIsChecked} />
+      <input type="checkbox" onChange={handleIsCheckedChange} />
 
       <span>
-        {content}
+        {task.content}
       </span>
       <div className={styles.topButton}>
-        <button onMouseDown={() =>{onDelete(id)}}>
+        <button onMouseDown={() =>{onDelete(task.id)}}>
           <Trash size={20} />
         </button>
       </div>
@@ -33,4 +35,4 @@ const CheckboxComponent = ({id, content, onDelete}: CheckboxProps) => {
   );
 };
 
-export default CheckboxComponent;
+export default TaskComponent;
