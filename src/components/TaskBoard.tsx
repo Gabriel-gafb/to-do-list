@@ -9,6 +9,15 @@ interface TaskBoardProps {
   onDelete: (id: string) => void;
 }
 export function TaskBoard({ tasks, onCheckChange, onDelete }: TaskBoardProps) {
+
+    function getConcludedTasksInfo(){
+        const isTaskBoardEmpty = tasks.length === 0;
+        if (isTaskBoardEmpty) return "0"
+        else{
+        const concludedTasks = tasks.filter((task) => task.isChecked == true).length
+        return `${concludedTasks} de ${tasks.length}`
+        }
+    }
   return (
     <div className={styles.taskList}>
       <div className={styles.infos}>
@@ -19,8 +28,7 @@ export function TaskBoard({ tasks, onCheckChange, onDelete }: TaskBoardProps) {
         <div>
           <strong className={styles.concludeTaskInfo}> Concluídas</strong>
           <span>
-            {tasks.filter((task) => task.isChecked == true).length} de{" "}
-            {tasks.length}
+            {getConcludedTasksInfo()}         
           </span>
         </div>
       </div>
