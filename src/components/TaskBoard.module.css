@@ -38,3 +38,12 @@
 .concludeTaskInfo {
     color: var(--purple)
 }
+
+.taskBoardEmpty{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0.7;
+    margin-top: 4rem;
+
+}
