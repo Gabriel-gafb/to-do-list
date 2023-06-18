@@ -1,10 +1,10 @@
-import styles from './Header.module.css';
-import toDoLogo from '../assets/to-do-logo.svg'
+import styles from "./Header.module.css";
+import toDoLogo from "../assets/to-do-logo.svg";
 
-export function Header(){
-    return(
+export function Header() {
+  return (
     <header className={styles.header}>
-     <img src={toDoLogo} alt="Logo ToDoList"/>
+      <img src={toDoLogo} alt="Logo ToDoList" />
     </header>
-    )
+  );
 }
