@@ -1,6 +1,13 @@
+import TaskComponent from './TaskComponent';
 import styles from './TaskBoard.module.css';
-import {Trash} from '@phosphor-icons/react'
-export function TaskBoard(){
+import { TaskInfo } from '../App';
+
+interface TaskBoardProps{
+  tasks : TaskInfo[],
+  onDelete: (id: string) => void;
+}
+export function TaskBoard({tasks, onDelete} : TaskBoardProps){
+
     return (
         <div className={styles.taskList}>
             <div className={styles.infos}>
@@ -15,62 +22,11 @@ export function TaskBoard(){
             </div>
                 <div className={styles.registeredTaskBoard}>
                     <ul>
-                        <li>
-                            <input type="checkbox" />
-
-                            <span>
-                                    Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-                            </span>
-                            <div className={styles.topButton}>
-                                <button>
-                                    <Trash size={20}/>
-                                </button>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox" />
-                            <span>
-                                    Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-                            </span>
-                            <div className={styles.topButton}>
-                                <button>
-                                    <Trash size={20}/>
-                                </button>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox" />
-                            <span>
-                                    Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-                            </span>
-                            <div className={styles.topButton}>
-                                <button>
-                                    <Trash size={20}/>
-                                </button>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox" />
-                            <span>
-                                    Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-                            </span>
-                            <div className={styles.topButton}>
-                                <button>
-                                    <Trash size={20}/>
-                                </button>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="checkbox" />
-                            <span>
-                                    Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.
-                            </span>
-                            <div className={styles.topButton}>
-                                <button>
-                                    <Trash size={20}/>
-                                </button>
-                            </div>
-                        </li>
+                        {tasks.map(task => {
+                            return (<TaskComponent key={task.id} id={task.id} content={task.content}  onDelete={onDelete}/>)
+                        })}
+                        
+                    
                     </ul>
                 </div>
 
